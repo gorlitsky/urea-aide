@@ -2634,36 +2634,52 @@
 																weight_kg_text.textContent = weight_kg + ' kg';
 
 																var dosage_row = null;
-																var dosage_text = '';
+																var packets_dosage_text = '';
+																var tablets_dosage_text = '';
+																var tablets_min_half = Math.round(weight_kg * 0.25 / 2.5 / 2);
+																var tablets_max_half = Math.round(weight_kg * 0.5 / 2.5 / 2);
+																var tablets_min_third = Math.round(weight_kg * 0.25 / 2.5 / 3);
+																var tablets_max_third = Math.round(weight_kg * 0.5 / 2.5 / 3);
 
 																if (weight_kg < 50) {
 																	dosage_row = document.getElementById('kg40');
-																	dosage_text = '1 Daily or 1 Twice Daily';
+																	packets_dosage_text = '1 Daily or 1 Twice Daily';
+																	tablets_dosage_text = tablets_min_half + '-' + tablets_max_half + ' Twice Daily';
 																} else if (weight_kg < 60) {
 																	dosage_row = document.getElementById('kg50');
-																	dosage_text = '1 Twice Daily';
+																	packets_dosage_text = '1 Twice Daily';
+																	tablets_dosage_text = tablets_min_half + '-' + tablets_max_half + ' Twice Daily';
 																} else if (weight_kg < 70) {
 																	dosage_row = document.getElementById('kg60');
-																	dosage_text = '1 Twice Daily';
+																	packets_dosage_text = '1 Twice Daily';
+																	tablets_dosage_text = tablets_min_half + '-' + tablets_max_half + ' Twice Daily';
 																} else if (weight_kg < 80) {
 																	dosage_row = document.getElementById('kg70');
-																	dosage_text = '1 Twice Daily';
+																	packets_dosage_text = '1 Twice Daily';
+																	tablets_dosage_text = tablets_min_half + '-' + tablets_max_half + ' Twice Daily';
 																} else if (weight_kg < 90) {
 																	dosage_row = document.getElementById('kg80');
-																	dosage_text = '1 Two or Three Times Daily';
+																	packets_dosage_text = '1 Two or Three Times Daily';
+																	tablets_dosage_text = tablets_min_third + '-' + tablets_max_third + ' Three Times Daily';
 																} else if (weight_kg < 100) {
 																	dosage_row = document.getElementById('kg90');
-																	dosage_text = '1 Three Times Daily';
+																	packets_dosage_text = '1 Three Times Daily';
+																	tablets_dosage_text = tablets_min_third + '-' + tablets_max_third + ' Three Times Daily';
 																} else if (weight_kg < 110) {
 																	dosage_row = document.getElementById('kg100');
-																	dosage_text = '1 Three Times Daily or 2 Twice Daily';
+																	packets_dosage_text = '1 Three Times Daily or 2 Twice Daily';
+																	tablets_dosage_text = tablets_min_third + '-' + tablets_max_third + ' Three Times Daily';
 																} else {
 																	dosage_row = document.getElementById('kg110');
-																	dosage_text = '2 Twice Daily';
+																	packets_dosage_text = '2 Twice Daily';
+																	tablets_dosage_text = tablets_min_third + '-' + tablets_max_third + ' Three Times Daily';
 																}
 																
-																var dosage_desc = document.getElementById('dosage_desc');
-																dosage_desc.textContent = dosage_text;
+																var packets_dosage = document.getElementById('packets_dosage');
+																packets_dosage.textContent = packets_dosage_text;
+
+																var tablets_dosage = document.getElementById('tablets_dosage');
+																tablets_dosage.textContent = tablets_dosage_text;
 
 																dosage_table = document.getElementById('dosage_table');
 																for (var i = 0; i < dosage_table.rows.length; i++) {
@@ -2677,9 +2693,16 @@
 													<br/>
 													<label>Enter Weight (lbs.)</label>
 															</td>
-															<td><b>Dosage:</b></td>
+															<td><b>Usual Dose:</b></td>
 															<td style="width: 60%; text-align: left;">
-																<span id="dosage_desc">1 Twice Daily</span>
+																<table>
+																	<tr>
+																		<td style="text-align: left;">Scoops/Packets:</td><td style="text-align: left;" id="packets_dosage">1 Twice Daily</td>
+																	</tr>
+																	<tr>
+																		<td style="text-align: left;">Tablets:</td><td style="text-align: left;" id="tablets_dosage">3-7 Twice Daily</td>
+																	</tr>
+																</table>
 															</td>
 														</tr>
 													</table>
@@ -2689,55 +2712,64 @@
 														<th>Weight in kg</th>
 														<th>Packets/day</th>
 														<th>Scoops/day</th>
+														<th>Tablets/day</th>
 														<th>Usual Dose</th>
 													</tr>
 													<tr id="kg40">
 														<td>40</td>
 														<td>1-2</td>
 														<td>1-2</td>
-														<td style="text-align: left;">Daily or 1 BID</td>
+														<td>4-8</td>
+														<td style="text-align: left;">Daily or Split BID</td>
 													</tr>
 													<tr id="kg50">
 														<td>50</td>
 														<td>2</td>
 														<td>2</td>
-														<td style="text-align: left;">1 BID</td>
+														<td>5-10</td>
+														<td style="text-align: left;">Split BID</td>
 													</tr>
 													<tr id="kg60" style="background-color: palegoldenrod;">
 														<td>60</td>
 														<td>2</td>
 														<td>2</td>
-														<td style="text-align: left;">1 BID</td>
+														<td>6-12</td>
+														<td style="text-align: left;">Split BID</td>
 													</tr>
 													<tr id="kg70">
 														<td>70</td>
 														<td>2</td>
 														<td>2</td>
-														<td style="text-align: left;">1 BID</td>
+														<td>7-14</td>
+														<td style="text-align: left;">Split BID</td>
 													</tr>
 													<tr id="kg80">
 														<td>80</td>
 														<td>2-3</td>
 														<td>2-3</td>
-														<td style="text-align: left;">1 BID or TID</td>
+														<td>8-16</td>
+														<td style="text-align: left;">Split BID or TID</td>
 													</tr>
 													<tr id="kg90">
 														<td>90</td>
 														<td>3</td>
 														<td>3</td>
-														<td style="text-align: left;">1 TID</td>
+														<td>9-18</td>
+														<td style="text-align: left;">Split TID</td>
 													</tr>
 													<tr id="kg100">
 														<td>100</td>
 														<td>3-4</td>
 														<td>3-4</td>
-														<td style="text-align: left;">1 TID to 2 BID</td>
+														<td>10-20</td>
+														<td style="text-align: left;">Split BID or TID</td>
 													</tr>
 													<tr id="kg110">
 														<td>110</td>
 														<td>4</td>
 														<td>4</td>
-														<td style="text-align: left;">2 BID</td>
+														<td>11-22</td>
+														<td style="text-align: left;">Split BID</td>
 													</tr>
 												</table>
 											</div>
