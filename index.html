@@ -2642,6 +2642,7 @@
 															<td style="width: 33%; text-align: center; padding-left: 3em;">
 													<label class="screen-reader-text" for="weight">UreaAide™ Dosing Weight Pounds</label>
 													<input style="width: 6em;" type="number" id="weight" class="input-text qty text" name="weight" value="150" title="Weight" size="4" min="0" max="" step="10" placeholder="" inputmode="numeric" autocomplete="off"
+															onkeyup="onchange()"
 															onchange="
 																var weight_kg = Math.round(value / 2.205);
 																
